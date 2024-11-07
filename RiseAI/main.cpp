@@ -55,11 +55,11 @@ F_SHADER_PATH[] = "shaders/fragment_textured.glsl";
 
 constexpr float MILLISECONDS_IN_SECOND = 1000.0;
 
-constexpr char SPRITESHEET_FILEPATH[] = "assets/george_0.png",
-PLATFORM_FILEPATH[] = "assets/platformPack_tile027.png",
-ENEMY_FILEPATH[] = "assets/soph.png";
+constexpr char PLAYER_FILEPATH[] = "assets/player.png",
+PLATFORM_FILEPATH[] = "assets/grass.png",
+ENEMY_FILEPATH[] = "assets/goblin.png";
 
-constexpr char BGM_FILEPATH[] = "assets/dooblydoo.mp3",
+constexpr char BGM_FILEPATH[] = "assets/bg_music.mp3",
 SFX_FILEPATH[] = "assets/bounce.wav";
 
 constexpr int NUMBER_OF_TEXTURES = 1;
@@ -89,6 +89,21 @@ void process_input();
 void update();
 void render();
 void shutdown();
+
+unsigned int MAP_DATA[] =
+{
+        3, 1, 1, 1, 1, 1, 1, 1, 1, 3,  // Row 0
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 1,  // Row 1
+        1, 0, 1, 1, 1, 1, 1, 0, 0, 1,  // Row 2
+        1, 0, 1, 0, 0, 0, 1, 0, 0, 1,  // Row 3
+        1, 0, 1, 0, 1, 1, 1, 0, 0, 1,  // Row 4
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 1,  // Row 5
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Row 6
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 1,  // Row 7
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  // Row 8
+        4, 1, 1, 1, 1, 1, 1, 1, 1, 2   // Row 9
+};
+
 
 // ––––– GENERAL FUNCTIONS ––––– //
 GLuint load_texture(const char* filepath)
@@ -168,9 +183,9 @@ void initialise()
         g_game_state.platforms[i].update(0.0f, NULL, NULL, 0);
     }
 
-    GLuint player_texture_id = load_texture(SPRITESHEET_FILEPATH);
+    GLuint player_texture_id = load_texture(PLAYER_FILEPATH);
 
-    int player_walking_animation[4][4] =
+    int warrior_animations[8][6] =
     {
     { 1, 5, 9, 13 },  // for George to move to the left,
     { 3, 7, 11, 15 }, // for George to move to the right,
@@ -185,7 +200,7 @@ void initialise()
         5.0f,                      // speed
         acceleration,              // acceleration
         3.0f,                      // jumping power
-        player_walking_animation,  // animation index sets
+        warrior_animations,  // animation index sets
         0.0f,                      // animation time
         4,                         // animation frame amount
         0,                         // current animation index
