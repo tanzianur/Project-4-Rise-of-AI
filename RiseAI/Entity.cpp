@@ -71,7 +71,7 @@ Entity::Entity()
 }
 
 // Parameterized constructor
-Entity::Entity(std::vector<GLuint> texture_ids, float speed, glm::vec3 acceleration, float jump_power, std::vector<std::vector<int>> animations, float animation_time, int animation_frames, int animation_index, int animation_cols, int animation_rows, float width, float height, EntityType EntityType, Animation animation)
+Entity::Entity(GLuint texture_ids, float speed, glm::vec3 acceleration, float jump_power, std::vector<std::vector<int>> animations, float animation_time, int animation_frames, int animation_index, int animation_cols, int animation_rows, float width, float height, EntityType EntityType, Animation animation)
     : m_position(0.0f), m_movement(0.0f), m_scale(1.0f, 1.0f, 0.0f), m_model_matrix(1.0f),
     m_speed(speed), m_acceleration(acceleration), m_jumping_power(jump_power), m_animation_cols(animation_cols),
     m_animation_frames(animation_frames), m_animation_index(animation_index),

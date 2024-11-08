@@ -69,10 +69,10 @@ public:
 
     // ————— METHODS ————— //
     Entity();
-    Entity(std::vector<GLuint> texture_ids, float speed, std::vector<std::vector<int>> animations,
+    Entity(GLuint texture_ids, float speed, std::vector<std::vector<int>> animations,
         float animation_time, int animation_frames, int animation_index,
         int animation_cols, int animation_rows, Animation animation);
-    Entity(std::vector<GLuint> texture_ids, float speed, glm::vec3 acceleration, float jump_power, std::vector<std::vector<int>> animations, float animation_time, int animation_frames, int animation_index, int animation_cols, int animation_rows, float width, float height, EntityType EntityType, Animation animation);
+    Entity(GLuint texture_ids, float speed, glm::vec3 acceleration, float jump_power, std::vector<std::vector<int>> animations, float animation_time, int animation_frames, int animation_index, int animation_cols, int animation_rows, float width, float height, EntityType EntityType, Animation animation);
     Entity(GLuint texture_id, float speed, float width, float height, EntityType EntityType); // Simpler constructor
     Entity(GLuint texture_id, float speed, float width, float height, EntityType EntityType, AIType AIType, AIState AIState); // AI constructor
     ~Entity();
